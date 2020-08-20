@@ -29,11 +29,11 @@ class VersusController extends AbstractController
             $city = $decoded->city;
             $forecast = $decoded->forecast;
 
-            print("Aujourd'hui à {$city->name}, on prévoit {$forecast->rr10}mm (pas plus de {$forecast->rr1}mm en tous cas) de précipitations.");
+            $info = "Aujourd'hui à {$city->name}, on prévoit {$forecast->rr10}mm (pas plus de {$forecast->rr1}mm en tous cas) de précipitations.";
         }
 
         return $this->render('versus/index.html.twig', [
-            'controller_name' => 'VersusController',
+            'info' => $info,
         ]);
     }
 }

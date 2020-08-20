@@ -5,6 +5,13 @@
     border-bottom: black solid 2px;
 }
 
+#mini-background-img{
+    background: url("../build/images/main-image.jpg") center;
+    background-size: cover;
+    height: 9vh;
+    border-bottom: black solid 2px;
+}
+
 ul a {
     color: black;
 }
@@ -21,3 +28,4 @@ ul a:hover {
 #menu a:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
