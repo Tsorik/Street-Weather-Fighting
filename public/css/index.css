@@ -2,6 +2,8 @@ body {
     background-color: #5a00fb !important;
 }
 
+/*Home Page  */
+
 .duel-card {
     border: black solid 2px;
     text-align: center;
@@ -36,4 +38,13 @@ body {
 
 .round a:hover {
     background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+footer{
+    text-align: center;
+    background-color:#4300ad;
+    position:absolute;
+    width: 100%;
+    color:yellow;
 }
