@@ -1,0 +1,39 @@
+body {
+    background-color: #5a00fb !important;
+}
+
+.duel-card {
+    border: black solid 2px;
+    text-align: center;
+    border-radius: 2%;
+}
+
+#vs1 {
+    background-color: #b60000
+}
+
+#vs2 {
+    background-color: #c98c00;
+}
+
+#section_duels {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+#historique_duels {
+    text-align: center;
+    padding-bottom: 5%;
+}
+
+.round {
+    border: solid black;
+    background: url("../build/images/main-image.jpg") center;
+    background-size: cover;
+    padding: 3% 0;
+    margin-bottom: 1%;
+}
+
+.round a:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
