@@ -10,16 +10,10 @@
 				<span>
 					Ville numéro 2
 				</span>
-				<form action="">
-					<input type="search" name="town" placeholder="Search">
+				<form action="{{ path('versus') }}" method="post">
+					<input type="search" name="id1" placeholder="Search">
 					<input type="submit" value="Go"><br>
-					<input type="checkbox">
-					Ville
-					<br>
-					<input type="checkbox">
-					Meteo
-					<br>
-					<input type="checkbox">Prout
+					
 				
 			</div>
 			<div id="vs2" class="col-4 duel-card">
@@ -27,15 +21,9 @@
 					Ville numéro 2
 				</span>
 				<br>
-					<input type="search" name="town" placeholder="Search">
+					<input type="search" name="id2" placeholder="Search">
 					<input type="submit" value="Go"><br>
-					<input type="checkbox">
-					Ville
-					<br>
-					<input type="checkbox">
-					Meteo
-					<br>
-					<input type="checkbox">Prout
+					
 				</form>
 			</div>
 		</div>
