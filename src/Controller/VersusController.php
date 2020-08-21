@@ -4,24 +4,28 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class VersusController extends AbstractController
 {
     /**
      * @Route("/versus", name="versus")
      */
-    public function index()
+    public function index(Request $request)
     {
-        $insee = file_get_contents('https://api.meteo-concept.com/api/location/cities?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&search=Rennes');
+        $id1 = $request->get('id1');
+        $id2 = $request->get('id2');
 
-       /*  if ($insee !== false) {
+        $insee = file_get_contents('https://api.meteo-concept.com/api/location/cities?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&search='. $id1 . '');
+
+        if ($insee !== false) {
             $table_cities = json_decode($insee);
             $cities = $table_cities->{'cities'};
             $cities = $cities[0];
             $insee_num = $cities->{'insee'};
-        } */
+        }
 
-        $data = file_get_contents('https://api.meteo-concept.com/api/forecast/daily/0?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&insee=' . $insee . '');
+        $data = file_get_contents('https://api.meteo-concept.com/api/forecast/daily/0?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&insee=' . $insee_num . '');
 
 
         if ($data !== false) {
