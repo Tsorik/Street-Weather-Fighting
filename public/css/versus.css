@@ -1,0 +1,47 @@
+#banniere-vs{
+    border-bottom: black solid 2px;
+}
+
+table{
+    width: 100%;
+    text-align: center;
+}
+
+caption { 
+    caption-side: top;
+    text-align: center;
+}
+
+.caption_h{
+    width: 60%;
+    margin: 0 20%;
+    background-color: #333;
+}
+
+table,
+td {
+    border: 1px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+.middle_td{
+    background-color: #333;
+    color: #fff;
+    width: 60%;
+}
+.left_td{
+    background-color: #c98c00;
+    color: #fff;
+    width: 20%;
+}
+
+.right_td{
+    background-color: #b60000;
+    color: #fff;
+    width: 20%;
+}

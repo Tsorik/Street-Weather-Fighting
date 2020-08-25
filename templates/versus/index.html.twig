@@ -1,9 +1,50 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello VersusController!{% endblock %}
-
+{% block stylesheets %}<link href="{{ asset('css/versus.css') }}" type="text/css" rel="stylesheet">{% endblock %}
 {% block body %}
 {% include ('mininavbar.html.twig') %}
-{{ info1 }}
-{{ info2 }}
+
+<div class="container-fluid">
+    <div id="banniere-vs" class="row">
+        <div class="col-md-6 text-center my-4">
+        {# {% if condition %}
+        
+        {% endif %} #}
+        
+            <img width="25%" src="{{ asset('build/images/soleil.png') }}"/><br>
+            <h1>{{ city_name1 }}</h1>
+        </div>
+        <div class="col-md-6 text-center my-4">
+            <h1>{{ city_name2 }}</h1><br>
+            <img width="25%" src="{{ asset('build/images/nuage.png') }}"/>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <table>
+            <caption><h2 class="caption_h">Donnée météo</h2></caption>
+            <thead>
+                <tr>
+                    <th class="left_th">{{ city_name1 }}</th>
+                    <th class="middle_th">VS</th>
+                    <th class="right_th">{{ city_name2 }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="left_td">{{ tmin1 }}</td>
+                    <td class="middle_td">Température minimum</td>
+                    <td class="right_td">{{ tmin2 }}</td>
+                </tr>
+                <tr>
+                    <td class="left_td">{{ tmax1 }}</td>
+                    <td class="middle_td">Température maximum</td>
+                    <td class="right_td">{{ tmax2 }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}
