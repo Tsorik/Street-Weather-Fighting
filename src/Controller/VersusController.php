@@ -50,8 +50,7 @@ class VersusController extends AbstractController
             $tmin = $forecast1->tmin;
         }
         
-        /* "Aujourd'hui à {$city1->name}, on prévoit {$forecast1->rr10}mm (pas plus de {$forecast1->rr1}mm en tous cas) de précipitations."; */
-        
+
         return $this->render('versus/index.html.twig', [
             'city_name1' => $city_name1,
             'city_name2' => $city_name2,
