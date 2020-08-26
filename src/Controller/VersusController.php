@@ -6,7 +6,6 @@ use App\Entity\Versus;
 use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\VersusRepository;
-use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
