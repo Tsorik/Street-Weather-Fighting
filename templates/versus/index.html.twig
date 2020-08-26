@@ -46,5 +46,25 @@
             </tbody>
         </table>
     </div>
+    <section id="commentaires">
+    {% for comment in comments.comments %}
+        <div class="comment">
+            <div class="row">
+                <div class="col-3">
+                    {{ comment.author }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+                </div>
+                <div class="col">
+                    {{ comment.content | raw }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </section>
+
+    {{ form_start(commentForm) }}
+    {{ form_row(commentForm.author, {'attr': {'placeeholder': "Votre nom"}})}}
+    {{ form_row(commentForm.content, {'attr': {'placeeholder': "Votre commentaire"}})}}
+    <button type="submit" class="btn btn-danger">Commenter !</button>
+    {{ form_end(commentForm) }} 
 </div>
 {% endblock %}
