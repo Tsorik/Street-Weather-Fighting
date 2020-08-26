@@ -1,6 +1,11 @@
 {% extends 'base.html.twig'%}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+{% block stylesheets %}<link href="{{ asset('css/registration.css') }}" type="text/css" rel="stylesheet">{% endblock %}
 
 {% block body %}
+{% include ('mininavbar.html.twig') %}
 <h1>Inscription</h1>
 
 {{ form_start(form)}}
