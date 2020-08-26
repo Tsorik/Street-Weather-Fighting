@@ -38,16 +38,10 @@ class VersusController extends AbstractController
 
         if ($data1 !== false && $data2 !== false) {
             $decoded1 = json_decode($data1);
-            $city1 = $decoded1->city;
             $forecast1 = $decoded1->forecast;
 
             $decoded2 = json_decode($data2);
-            $city2 = $decoded2->city;
             $forecast2 = $decoded2->forecast;
-
-            dump($forecast1);
-            $tmax = $forecast1->tmax;
-            $tmin = $forecast1->tmin;
         }
         
 

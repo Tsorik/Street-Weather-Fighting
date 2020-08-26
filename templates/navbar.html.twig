@@ -3,7 +3,12 @@
 		<ul class="navbar-nav  mr-4">
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				{% if app.user != false %}
 					{{ app.user.username }}
+				{% else %}
+						Bienvenue !
+				{% endif %}
+				
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="menu">
 					{% if not app.user %}
