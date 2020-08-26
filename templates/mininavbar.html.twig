@@ -1,16 +1,23 @@
 <nav id="mini-background-img" class="navbar navbar-expand-lg">
     <div class="navbar ml-auto mb-auto" id="navbarNavDropdown">
         <ul class="navbar-nav  mr-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Nom utilisateur
+           <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				{% if app.user != false %}
+					{{ app.user.username }}
+				{% else %}
+						Bienvenue !
+				{% endif %}
 				</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="menu">
-                    <a class="dropdown-item" href="#">Connexion</a>
-                    <a class="dropdown-item" href="{{ path('security_registration') }}">Inscription</a>
-                    <a class="dropdown-item" href="#">Déconnexion</a>
-                </div>
-            </li>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="menu">
+					{% if not app.user %}
+						<a class="dropdown-item" href="{{ path('security_login') }}">Connexion</a>
+						<a class="dropdown-item" href="{{ path('security_registration') }}">Inscription</a>
+					{% else %}
+						<a class="dropdown-item" href="{{ path('security_logout') }}">Déconnexion</a>
+					{% endif %}
+				</div>
+			</li>
         </ul>
     </div>
 </nav>
