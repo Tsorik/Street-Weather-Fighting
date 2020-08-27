@@ -1,77 +1,83 @@
-{% extends 'base.html.twig' %}
-{% block title %}Hello HomeController!
-{% endblock %}
-{% block body %}
-	{% include ('navbar.html.twig') %}
+{% extends 'base.html.twig' %} {% block title %}Hello HomeController! {% endblock %} {% block body %} {% include ('navbar.html.twig') %}
 
-	<div class="container-fluid mt-4">
-		<div class="row justify-content-center">
-			<div id="vs1" class="col-4 duel-card">
-				<span>
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div id="vs1" class="col-4 duel-card">
+            <span>
 					Ville numéro 2
 				</span>
-				<form action="{{ path('versus') }}" method="post">
-					<input type="search" name="id1" placeholder="Search">
-					<input type="submit" value="Go"><br>
-					
-				
-			</div>
-			<div id="vs2" class="col-4 duel-card">
-				<span>
-					Ville numéro 2
-				</span>
-				<br>
-					<input type="search" name="id2" placeholder="Search">
-					<input type="submit" value="Go"><br>
-					
-				</form>
-			</div>
-		</div>
-	</div>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6 offset-md-1" id="section_duels">
-				<h4 id="historique_duels">Historique des duels</h4>
-				<div class="row round">
-					<div class="col-md-6 text-center">
-						<h3>Marseille<h3>
-                    </div>
-					<div class="col-md-6 text-center">
-						<h3>Rennes</h3>
-					</div>
+
+            <form action="{{ path('versus') }}" method="post">
+                <input type="text" list="cities" id="choix_villes">
+                <datalist id="citie">
+
+                    <option value="ville"/>
+                        <option value="ville"/>
+
+                </datalist>
+
+        </div>
+        <div id="vs2" class="col-4 duel-card">
+            <span>
+						Ville numéro 2
+					</span>
+            <br>
+            <input type="search" name="id2" placeholder="Search">
+            <input type="submit" value="Go"><br>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-1" id="section_duels">
+            <h4 id="historique_duels">Historique des duels</h4>
+            <div class="row round">
+                <div class="col-md-6 text-center">
+                    <h3>Marseille
+                        <h3>
                 </div>
-                <div class="row round">
-					<div class="col-md-6 text-center">
-						<h3>Nice<h3>
-                    </div>
-					<div class="col-md-6 text-center">
-						<h3>Lille</h3>
-					</div>
-                </div>
-                <div class="row round">
-					<div class="col-md-6 text-center">
-						<h3>Brest<h3>
-                    </div>
-					<div class="col-md-6 text-center">
-						<h3>Bordeaux</h3>
-					</div>
-                </div>
-                <div class="row round">
-					<div class="col-md-6 text-center">
-						<h3>Toulouse<h3>
-                    </div>
-					<div class="col-md-6 text-center">
-						<h3>Paris</h3>
-					</div>
+                <div class="col-md-6 text-center">
+                    <h3>Rennes</h3>
                 </div>
             </div>
+            <div class="row round">
+                <div class="col-md-6 text-center">
+                    <h3>Nice
+                        <h3>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h3>Lille</h3>
+                </div>
+            </div>
+            <div class="row round">
+                <div class="col-md-6 text-center">
+                    <h3>Brest
+                        <h3>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h3>Bordeaux</h3>
+                </div>
+            </div>
+            <div class="row round">
+                <div class="col-md-6 text-center">
+                    <h3>Toulouse
+                        <h3>
+                </div>
+                <div class="col-md-6 text-center">
+                    <h3>Paris</h3>
+                </div>
+            </div>
+        </div>
 
-					<div class="col-md-3 offset-md-2 mt-4" id="podium">
-						<h4>Top ville</h4>
-						<img width="50%" src="{{ asset('build/images/podium.png') }}"/>
-					</div>
-				</div>
-			</div>
+        <div class="col-md-3 offset-md-2 mt-4" id="podium">
+            <h4>Top ville</h4>
+            <img width="50%" src="{{ asset('build/images/podium.png') }}" />
+        </div>
+    </div>
+</div>
 
-		{% endblock %}
+{% endblock %}
