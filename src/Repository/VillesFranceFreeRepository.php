@@ -7,6 +7,7 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 
+
 /**
  * @method VillesFranceFree|null find($id, $lockMode = null, $lockVersion = null)
  * @method VillesFranceFree|null findOneBy(array $criteria, array $orderBy = null)
@@ -20,27 +21,46 @@ class VillesFranceFreeRepository extends ServiceEntityRepository
         parent::__construct($registry, VillesFranceFree::class);
     }
 
-
-    /**
-     * @return VillesFranceFree[]
-     */
-    public function findAllVisible(): array
+   /**
+    * @return VillesFranceFree[] Returns an array of Cities objects
+    */
+    public function findByName($value)
     {
-        return $this->findVisibleQuery()
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.villeNom like :villeNom')
+            ->setParameter('villeNom', "%". $value ."%")
+            // ->orderBy('c.id', 'ASC')
+            // ->setMaxResults(10)
             ->getQuery()
-            ->getResult();
+            ->getResult()
+        ;
     }
+    // public function __construct(ManagerRegistry $registry)
+    // {
+    //     parent::__construct($registry, VillesFranceFree::class);
+    // }
 
-    /**
-     * @return VillesFranceFree[]
-     */
-    public function findLatest(): array
-    {
-        return $this->findVisibleQuery()
-            ->setMaxResults(4)
-            ->getQuery()
-            ->getResult();
-     }
+
+    // /**
+    //  * @return VillesFranceFree[]
+    //  */
+    // public function findAllVisible(): array
+    // {
+    //     return $this->findVisibleQuery()
+    //         ->getQuery()
+    //         ->getResult();
+    // }
+
+    // /**
+    //  * @return VillesFranceFree[]
+    //  */
+    // public function findLatest(): array
+    // {
+    //     return $this->findVisibleQuery()
+    //         ->setMaxResults(4)
+    //         ->getQuery()
+    //         ->getResult();
+    //  }
 
 // private functions
 
