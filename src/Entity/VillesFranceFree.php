@@ -44,6 +44,13 @@ class VillesFranceFree
      */
     private $villeNom;
 
+        /**
+     * @var string|null
+     *
+     * @ORM\Column(name="ville_nom", type="string", length=45, nullable=true)
+     */
+    private $villeNom2;
+
     /**
      * @var string|null
      *
@@ -242,6 +249,18 @@ class VillesFranceFree
     public function setVilleNom(?string $villeNom): self
     {
         $this->villeNom = $villeNom;
+
+        return $this;
+    }
+
+    public function getVilleNom2(): ?string
+    {
+        return $this->villeNom2;
+    }
+
+    public function setVilleNom2(?string $villeNom2): self
+    {
+        $this->villeNom2 = $villeNom2;
 
         return $this;
     }

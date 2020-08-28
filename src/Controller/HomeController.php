@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\VillesFranceFree;
-use App\Form\SearchCityType;
+use App\Form\VillesFranceFreeType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,12 +20,30 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index()
+    public function index(Request $request)
     {
+        $city = new VillesFranceFree();
 
+        $form = $this->createForm(VillesFranceFreeType::class, $city);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $city = $form->getData();
+    
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            // $entityManager = $this->getDoctrine()->getManager();
+            // $entityManager->persist($task);
+            // $entityManager->flush();
+    
+            return $this->redirectToRoute('versus');
+        }
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
+            'form' => $form->createView(),
 
         ]);
     }

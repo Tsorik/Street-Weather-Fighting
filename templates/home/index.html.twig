@@ -3,11 +3,10 @@
 <div class="container-fluid mt-4">
     <div class="row justify-content-center">
         <div id="vs1" class="col-4 duel-card">
-            <span>
-					Ville numéro 2
-				</span>
+                {{ form_start(form) }}
+                {{ form_row(form.villeNom,{'full_name': 'id1'}) }}
 
-
+{#
             <form action="{{ path('versus') }}" method="post">
                 <input type="text" list="cities" id="choix_villes">
                 <datalist id="citie">
@@ -15,17 +14,18 @@
                     <option value="ville"/>
                         <option value="ville"/>
 
-                </datalist>
+                </datalist> #}
 
         </div>
         <div id="vs2" class="col-4 duel-card">
-            <span>
-						Ville numéro 2
-					</span>
+
+            {{ form_row(form.villeNom2,{'full_name': 'id2'}) }}
             <br>
-            <input type="search" name="id2" placeholder="Search">
+            {{ form_widget(form.save) }}
+            {{ form_end(form) }}
+            {# <input type="search" name="id2" placeholder="Search">
             <input type="submit" value="Go"><br>
-            </form>
+            </form> #}
 
         </div>
     </div>
