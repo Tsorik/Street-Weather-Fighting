@@ -58,13 +58,13 @@ class VersusController extends AbstractController
             $city2 = $decoded2->city;
         }
         /* find versus page id existing or create */
-      /*   $versus_id = $versusRepository
+        $versus_id = $versusRepository
             ->findOneBy([
                 'city1' => $city_name1,
                 'city2' => $city_name2,
             ]);
- */
-        $queryBuilder = $this->$manager->getRepository(VersusRepository::class)
+
+        /* $queryBuilder = $this->$manager->getRepository(VersusRepository::class)
             ->createQueryBuilder('u');
 
         $result = $queryBuilder->select('u')
@@ -73,15 +73,15 @@ class VersusController extends AbstractController
             ->setParameters(array("city_name1" => $city_name1, "city_name2" => $city_name2))
             ->getQuery()
             ->getResult();
-dump($result);
-        if (!$result) {
+        dump($result); */
+        if (!$versus_id) {
             $versus = new Versus();
             $versus->setCity1($city_name1);
             $versus->setCity2($city_name2);
             $manager->persist($versus);
             $manager->flush();
         } else {
-            $versus = $result;
+            $versus = $versus_id;
         }
         $comments = $versusRepository->find($versus->id);
         if (!$comments) {
