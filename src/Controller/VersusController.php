@@ -28,35 +28,46 @@ class VersusController extends AbstractController
         $insee_num1 = substr($insee_num1->getvilleCodePostal(), 0,5);
         dump($insee_num1);
         dump($city1); */
+
         /* weather api request insee code */
         $insee1 = file_get_contents('https://api.meteo-concept.com/api/location/cities?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&search=' . $city_name1 . '');
         $insee2 = file_get_contents('https://api.meteo-concept.com/api/location/cities?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&search=' . $city_name2 . '');
 
+       
         if ($insee1 !== false && $insee2 !== false) {
             $table_cities1 = json_decode($insee1);
             $cities1 = $table_cities1->{'cities'};
             $cities1 = $cities1[0];
             $insee_num1 = $cities1->{'insee'};
+            $city_name_str1 = $cities1->{'name'};
+            $city_name_str1 = strstr($city_name_str1, ' ', true);
+            if (!$city_name_str1) {
+                $city_name_str1 = $cities1->{'name'};
+            }
 
             $table_cities2 = json_decode($insee2);
             $cities2 = $table_cities2->{'cities'};
             $cities2 = $cities2[0];
             $insee_num2 = $cities2->{'insee'};
+            $city_name_str2 = $cities2->{'name'};
+            $city_name_str2 = strstr($city_name_str2, ' ', true);
+            if (!$city_name_str2) {
+                $city_name_str2 = $cities2->{'name'};
+            }
         }
 
         /* weather api request data */
         $data1 = file_get_contents('https://api.meteo-concept.com/api/forecast/daily/0?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&insee=' . $insee_num1 . '');
         $data2 = file_get_contents('https://api.meteo-concept.com/api/forecast/daily/0?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&insee=' . $insee_num2 . '');
-
+        
         if ($data1 !== false && $data2 !== false) {
             $decoded1 = json_decode($data1);
             $forecast1 = $decoded1->forecast;
-            $city1 = $decoded1->city;
 
             $decoded2 = json_decode($data2);
             $forecast2 = $decoded2->forecast;
-            $city2 = $decoded2->city;
         }
+
         /* find versus page id existing or create */
         $versus_id = $versusRepository
             ->findOneBy([
@@ -99,8 +110,8 @@ class VersusController extends AbstractController
         }
 
         return $this->render('versus/index.html.twig', [
-            'city_name1' => $city1->name,
-            'city_name2' => $city2->name,
+            'city_name1' => $city_name_str1,
+            'city_name2' => $city_name_str2,
             'tmax1' => $forecast1->tmax,
             'tmax2' => $forecast2->tmax,
             'tmin1' => $forecast1->tmin,
@@ -109,7 +120,13 @@ class VersusController extends AbstractController
             'commentForm' => $form->createView(),
             'comments' => $comments,
             'weather1' => $forecast1->weather,
-            'weather2' => $forecast2->weather
+            'weather2' => $forecast2->weather,
+            'sunhours1' => $forecast1->sun_hours,
+            'sunhours2' => $forecast2->sun_hours,
+            'probawind1' => $forecast1->probawind70,
+            'probawind2' => $forecast2->probawind70,
+            'probarain1' => $forecast1->probarain,
+            'probarain2' => $forecast2->probarain
         ]);
     }
 }
