@@ -47,7 +47,7 @@ class VillesFranceFree
         /**
      * @var string|null
      *
-     * @ORM\Column(name="ville_nom", type="string", length=45, nullable=true)
+     * @ORM\Column(name="ville_nom2", type="string", length=45, nullable=true)
      */
     private $villeNom2;
 
