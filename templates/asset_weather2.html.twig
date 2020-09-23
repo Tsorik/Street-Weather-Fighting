@@ -1,0 +1,21 @@
+{% if weather2 == 0 %}
+	<img width="25%" src="{{ asset('build/images/0.png') }}"/><br>
+{% elseif weather2 == 1 %}
+	<img width="25%" src="{{ asset('build/images/1.png') }}"/><br>
+{% elseif weather2 >= 2 and weather2 <= 3 %}
+	<img width="25%" src="{{ asset('build/images/3.png') }}"/><br>
+{% elseif weather2 >= 4 and weather2 <= 5 %}
+	<img width="25%" src="{{ asset('build/images/4.png') }}"/><br>
+{% elseif weather2 >= 6 and weather2 <= 7 %}
+	<img width="25%" src="{{ asset('build/images/6.png') }}"/><br>
+{% elseif weather2 >= 10 and weather2 <= 11 or weather2 >= 13 and weather2 <= 14 or weather2 == 16 or weather2 >= 40 and weather2 <= 41 or weather2 >= 43 and weather2 <= 44 or weather2 >= 46 and weather2 <= 47 or weather2 >= 210 and weather2 <= 211 %}
+	<img width="25%" src="{{ asset('build/images/10.png') }}"/><br>
+{% elseif weather2 == 12 or weather2 == 15 or weather2 == 42 or weather2 == 45 or weather2 == 48 or weather2 == 212 %}
+	<img width="25%" src="{{ asset('build/images/12.png') }}"/><br>
+{% elseif weather2 >= 60 and weather2 <= 78 or weather2 >= 220 and weather2 <= 232 %}
+	<img width="25%" src="{{ asset('build/images/60.png') }}"/><br>
+{% elseif weather2 >= 100 and weather2 <= 142 %}
+	<img width="25%" src="{{ asset('build/images/100.png') }}"/><br>
+{% elseif weather2 == 235 %}
+	<img width="25%" src="{{ asset('build/images/100.png') }}"/><br>
+{% endif %}
