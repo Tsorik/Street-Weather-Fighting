@@ -1,0 +1,37 @@
+
+table{
+    width: 100%;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+caption { 
+    caption-side: top;
+    text-align: center;
+    background-color:grey;
+    border: 2px solid #333;
+    color: #fff;
+}
+
+
+table,
+td {
+    border: 2px solid #333;
+}
+
+thead,
+tfoot {
+    background-color:grey;
+    color: #fff;
+}
+
+.middle_td{
+    background-color:grey;
+    color: #fff;
+    width: 60%;
+}
+
+#map {
+    height: 300px;  /* The height is 300 pixels */
+    width: 300px;  /* The width is the width of the web page */
+   }

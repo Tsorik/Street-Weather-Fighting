@@ -15,7 +15,7 @@ class VillesFranceFreeType extends AbstractType
     {
         $builder
             ->add('villeNom',SearchType::class)
-            ->add('villeNom2',SearchType::class)
+            
             ->add('save', SubmitType::class)
 
         ;

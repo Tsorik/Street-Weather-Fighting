@@ -21,196 +21,189 @@ class VillesFranceFree
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $villeId;
+    public $villeId;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_departement", type="string", length=3, nullable=true)
      */
-    private $villeDepartement;
+    public $villeDepartement;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_slug", type="string", length=255, nullable=true)
      */
-    private $villeSlug;
+    public $villeSlug;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_nom", type="string", length=45, nullable=true)
      */
-    private $villeNom;
-
-        /**
-     * @var string|null
-     *
-     * @ORM\Column(name="ville_nom2", type="string", length=45, nullable=true)
-     */
-    private $villeNom2;
+    public $villeNom;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_nom_simple", type="string", length=45, nullable=true)
      */
-    private $villeNomSimple;
+    public $villeNomSimple;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_nom_reel", type="string", length=45, nullable=true)
      */
-    private $villeNomReel;
+    public $villeNomReel;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_nom_soundex", type="string", length=20, nullable=true)
      */
-    private $villeNomSoundex;
+    public $villeNomSoundex;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_nom_metaphone", type="string", length=22, nullable=true)
      */
-    private $villeNomMetaphone;
+    public $villeNomMetaphone;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_code_postal", type="string", length=255, nullable=true)
      */
-    private $villeCodePostal;
+    public $villeCodePostal;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_commune", type="string", length=3, nullable=true)
      */
-    private $villeCommune;
+    public $villeCommune;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ville_code_commune", type="string", length=5, nullable=false)
      */
-    private $villeCodeCommune;
+    public $villeCodeCommune;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_arrondissement", type="smallint", nullable=true, options={"unsigned"=true})
      */
-    private $villeArrondissement;
+    public $villeArrondissement;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_canton", type="string", length=4, nullable=true)
      */
-    private $villeCanton;
+    public $villeCanton;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_amdi", type="smallint", nullable=true, options={"unsigned"=true})
      */
-    private $villeAmdi;
+    public $villeAmdi;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_population_2010", type="integer", nullable=true, options={"unsigned"=true})
      */
-    private $villePopulation2010;
+    public $villePopulation2010;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_population_1999", type="integer", nullable=true, options={"unsigned"=true})
      */
-    private $villePopulation1999;
+    public $villePopulation1999;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_population_2012", type="integer", nullable=true, options={"unsigned"=true,"comment"="approximatif"})
      */
-    private $villePopulation2012;
+    public $villePopulation2012;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_densite_2010", type="integer", nullable=true)
      */
-    private $villeDensite2010;
+    public $villeDensite2010;
 
     /**
      * @var float|null
      *
      * @ORM\Column(name="ville_surface", type="float", precision=10, scale=0, nullable=true)
      */
-    private $villeSurface;
+    public $villeSurface;
 
     /**
      * @var float|null
      *
      * @ORM\Column(name="ville_longitude_deg", type="float", precision=10, scale=0, nullable=true)
      */
-    private $villeLongitudeDeg;
+    public $villeLongitudeDeg;
 
     /**
      * @var float|null
      *
      * @ORM\Column(name="ville_latitude_deg", type="float", precision=10, scale=0, nullable=true)
      */
-    private $villeLatitudeDeg;
+    public $villeLatitudeDeg;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_longitude_grd", type="string", length=9, nullable=true)
      */
-    private $villeLongitudeGrd;
+    public $villeLongitudeGrd;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_latitude_grd", type="string", length=8, nullable=true)
      */
-    private $villeLatitudeGrd;
+    public $villeLatitudeGrd;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_longitude_dms", type="string", length=9, nullable=true)
      */
-    private $villeLongitudeDms;
+    public $villeLongitudeDms;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="ville_latitude_dms", type="string", length=8, nullable=true)
      */
-    private $villeLatitudeDms;
+    public $villeLatitudeDms;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_zmin", type="integer", nullable=true)
      */
-    private $villeZmin;
+    public $villeZmin;
 
     /**
      * @var int|null
      *
      * @ORM\Column(name="ville_zmax", type="integer", nullable=true)
      */
-    private $villeZmax;
+    public $villeZmax;
 
     public function getVilleId(): ?int
     {
@@ -249,18 +242,6 @@ class VillesFranceFree
     public function setVilleNom(?string $villeNom): self
     {
         $this->villeNom = $villeNom;
-
-        return $this;
-    }
-
-    public function getVilleNom2(): ?string
-    {
-        return $this->villeNom2;
-    }
-
-    public function setVilleNom2(?string $villeNom2): self
-    {
-        $this->villeNom2 = $villeNom2;
 
         return $this;
     }

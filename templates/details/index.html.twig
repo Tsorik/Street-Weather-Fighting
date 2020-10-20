@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailsController!{% endblock %}
+{% block stylesheets %}
+<link href="{{ asset('css/details.css') }}" type="text/css" rel="stylesheet">{% endblock %}
+{% block body %}
+{% include ('mininavbar.html.twig') %}
+<div class="container-fluid">
+    <div id="banniere-vs" class="row">
+        <div class="col-md-12 text-center my-4">
+            <img width="20%" src="{{ asset('build/images/4.png') }}" /><br>
+            <h1>{{ city_name }}</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <table>
+                <caption>
+                    <h2 class="caption_h">Donnée météo</h2>
+                </caption>
+                <tbody>
+                    <tr>
+                        <th class="middle_td">Température minimale</th>
+                    </tr>
+                    <tr>
+                        <td class="middle_td">8</td>
+                    </tr>
+                    <tr>
+                        <th class="middle_td">Température maximale</th>
+                    </tr>
+                    <tr>
+                        <td class="middle_td">20</td>
+                    </tr>
+                    <tr>
+                        <th class="middle_td">Temps d'ensoleillement</th>
+                    </tr>
+                    <tr>
+                        <td class="middle_td">10h</td>
+                    </tr>
+                    <tr>
+                        <th class="middle_td">wind</th>
+                    </tr>
+                    <tr>
+                        <td class="middle_td">40km/h</td>
+                    </tr>
+                    <tr>
+                        <th class="middle_td">rain</th>
+                    </tr>
+                    <tr>
+                        <td class="middle_td">0%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div id="map"></div>
+                <script>
+                    var lat = {{ lat | json_encode() }}
+                    var lng = {{ lng | json_encode() }}
+                    // Initialize and add the map
+                    function initMap() {
+                        // The location of Uluru
+                        var uluru = {
+                            lat: lat,
+                            lng: lng
+                        };
+                        // The map, centered at Uluru
+                        var map = new google.maps.Map(
+                            document.getElementById('map'), {
+                                zoom: 8,
+                                center: uluru
+                            });
+                        // The marker, positioned at Uluru
+                        var marker = new google.maps.Marker({
+                            position: uluru,
+                            map: map
+                        });
+                    }
+                </script>
+                <script defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjhy053n06QVeaZgECBwicZIlvg9qDVrI&callback=initMap">
+                </script>
+            </div>
+            <div class="row">
+                <img src="http://fakeimg.pl/300/">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

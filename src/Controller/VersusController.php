@@ -22,7 +22,7 @@ class VersusController extends AbstractController
         $city_name1 = $request->get('id1');
         $city_name2 = $request->get('id2');
 
-        /* $city1 = $villesFranceFree->findBy(['villeSlug' => $city_name1]);
+   /*      $city1 = $villesFranceFree->findBy(['villeSlug' => $city_name1]);
         $city2 = $villesFranceFree->findBy(['villeSlug' => $city_name2]);
         $insee_num1 = $city1[0];
         $insee_num1 = substr($insee_num1->getvilleCodePostal(), 0,5);
@@ -32,8 +32,7 @@ class VersusController extends AbstractController
         /* weather api request insee code */
         $insee1 = file_get_contents('https://api.meteo-concept.com/api/location/cities?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&search=' . $city_name1 . '');
         $insee2 = file_get_contents('https://api.meteo-concept.com/api/location/cities?token=69465bc653ad80ed00bfa483dfc17a1b5f50bc9354c117c238f7d093454754fd&search=' . $city_name2 . '');
-
-       
+          
         if ($insee1 !== false && $insee2 !== false) {
             $table_cities1 = json_decode($insee1);
             $cities1 = $table_cities1->{'cities'};
@@ -69,41 +68,31 @@ class VersusController extends AbstractController
         }
 
         /* find versus page id existing or create */
-        $versus_id = $versusRepository
-            ->findOneBy([
-                'city1' => $city_name1,
-                'city2' => $city_name2,
-            ]);
+        $result = $versusRepository->verification_versus($city_name1, $city_name2);
 
-        /* $queryBuilder = $this->$manager->getRepository(VersusRepository::class)
-            ->createQueryBuilder('u');
-
-        $result = $queryBuilder->select('u')
-            ->from('versus', 'u')
-            ->where('u.city1 = city_name1 and u.city2 = city_name2 or u.city1 = city_name2 and u.city2 = city_name1')
-            ->setParameters(array("city_name1" => $city_name1, "city_name2" => $city_name2))
-            ->getQuery()
-            ->getResult();
-        dump($result); */
-        if (!$versus_id) {
+        if (!$result) {
             $versus = new Versus();
             $versus->setCity1($city_name1);
             $versus->setCity2($city_name2);
             $manager->persist($versus);
             $manager->flush();
         } else {
-            $versus = $versus_id;
+            $result = $result[0];
+            $versus = $result;
         }
         $comments = $versusRepository->find($versus->id);
         if (!$comments) {
             $comments = "Pas de commentaires !";
         }
 
+        /* loading comments */
         $comment = new Comment();
         $comment->setCreatedAt(new \DateTime());
-        $comment->setVersus($versus_id);
+        $comment->setVersus($versus);
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
+        $empty_form = $this->createForm(CommentType::class);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $manager->persist($comment);
             $manager->flush();
@@ -117,7 +106,7 @@ class VersusController extends AbstractController
             'tmin1' => $forecast1->tmin,
             'tmin2' => $forecast2->tmin,
             'info' => $forecast1,
-            'commentForm' => $form->createView(),
+            'commentForm' => $empty_form->createView(),
             'comments' => $comments,
             'weather1' => $forecast1->weather,
             'weather2' => $forecast2->weather,

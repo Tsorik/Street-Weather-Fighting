@@ -19,6 +19,13 @@ class VersusRepository extends ServiceEntityRepository
         parent::__construct($registry, Versus::class);
     }
 
+    public function verification_versus($city1, $city2){
+        $builder = $this->createQueryBuilder('v')
+        ->where('v.city1 = :city_name1 and v.city2 = :city_name2 or v.city1 = :city_name2 and v.city2 = :city_name1')
+        ->setParameters(array("city_name1" => $city1, "city_name2" => $city2));
+        return ($builder->getQuery()->execute());
+    }
+
     // /**
     //  * @return Versus[] Returns an array of Versus objects
     //  */
