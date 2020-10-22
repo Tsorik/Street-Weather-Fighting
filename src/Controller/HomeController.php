@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\VillesFranceFree;
+use App\Entity\Versus;
 use App\Form\VillesFranceFreeType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,32 +20,36 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request)
+    public function index(Request $request, EntityManagerInterface $em)
     {
-        $city = new VillesFranceFree();
 
-        $form = $this->createForm(VillesFranceFreeType::class, $city);
+        $city_name1 = $request->get('id1');
+        $city_name2 = $request->get('id2');
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $city = $form->getData();
-    
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($task);
-            // $entityManager->flush();
-    
+        // $response = $httpClient->request('GET', 'https://api.teleport.org/api/cities/?search=quimperl%C3%A9');
+        // dd($response->getContent());
+
+        $citySearch = new Versus();
+
+        $formSearchCity = $this->createForm(VillesFranceFreeType::class, $citySearch);
+
+        $formSearchCity->handleRequest($request);
+
+        if ($formSearchCity->isSubmitted() && $formSearchCity->isValid()) {
+            $citySearch = $formSearchCity->getData();
+            $citySearch->setcity1($city_name1);
+            $citySearch->setcity2($city_name2);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($citySearch);
+            $em->flush();
+
             return $this->redirectToRoute('versus');
         }
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'form' => $form->createView(),
+            'formSearchCity' => $formSearchCity->createView(),
 
         ]);
     }
-
 }

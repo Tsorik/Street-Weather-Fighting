@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\VillesFranceFree;
+use App\Entity\Versus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,8 +14,8 @@ class VillesFranceFreeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('villeNom',SearchType::class)
-            
+            ->add('city1',SearchType::class)
+            ->add('city2',SearchType::class)
             ->add('save', SubmitType::class)
 
         ;
@@ -24,7 +24,7 @@ class VillesFranceFreeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => VillesFranceFree::class,
+            'data_class' => Versus::class,
         ]);
     }
 }
