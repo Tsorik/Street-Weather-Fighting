@@ -23,8 +23,8 @@ class HomeController extends AbstractController
     public function index(Request $request, EntityManagerInterface $em)
     {
 
-        $city_name1 = $request->get('id1');
-        $city_name2 = $request->get('id2');
+        $city_name1 = $request->get('city_name1');
+        $city_name2 = $request->get('city_name2');
 
         // $response = $httpClient->request('GET', 'https://api.teleport.org/api/cities/?search=quimperl%C3%A9');
         // dd($response->getContent());

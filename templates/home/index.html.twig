@@ -4,12 +4,12 @@
     <div class="row justify-content-center">
         <div id="vs1" class="col-4 duel-card">
                 {{ form_start(formSearchCity) }}
-                {{ form_row(formSearchCity.city1,{'full_name': 'id1'}) }}
+                {{ form_row(formSearchCity.city1,{'full_name': 'city_name1'}) }}
 
         </div>
         <div id="vs2" class="col-4 duel-card">
 
-            {{ form_row(formSearchCity.city2,{'full_name': 'id2'}) }}
+            {{ form_row(formSearchCity.city2,{'full_name': 'city_name2'}) }}
             <br>
             {{ form_widget(formSearchCity.save) }}
             {{ form_end(formSearchCity) }}
