@@ -43,7 +43,7 @@ class HomeController extends AbstractController
             $em->persist($citySearch);
             $em->flush();
 
-            return $this->redirectToRoute('versus');
+            return $this->redirect('versus?id1='.$city_name1.'&id2='.$city_name2.'');
         }
 
         return $this->render('home/index.html.twig', [
