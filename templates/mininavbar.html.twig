@@ -1,6 +1,9 @@
 <nav id="mini-background-img" class="navbar navbar-expand-lg">
     <div class="navbar ml-auto mb-auto" id="navbarNavDropdown">
         <ul class="navbar-nav  mr-4">
+				<li class="nav-item">
+		<a class="nav-item" href="{{ path('home') }}">home</a>
+		</li>
            <li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				{% if app.user != false %}
