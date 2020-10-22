@@ -36,12 +36,6 @@ class HomeController extends AbstractController
         $formSearchCity->handleRequest($request);
 
         if ($formSearchCity->isSubmitted() && $formSearchCity->isValid()) {
-            $citySearch = $formSearchCity->getData();
-            $citySearch->setcity1($city_name1);
-            $citySearch->setcity2($city_name2);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($citySearch);
-            $em->flush();
 
             return $this->redirect('versus?id1='.$city_name1.'&id2='.$city_name2.'');
         }
