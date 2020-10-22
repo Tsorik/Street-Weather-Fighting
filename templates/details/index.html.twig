@@ -1,93 +1,98 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DetailsController!{% endblock %}
+{% block title %}Hello DetailsController!
+{% endblock %}
 {% block stylesheets %}
-<link href="{{ asset('css/details.css') }}" type="text/css" rel="stylesheet">{% endblock %}
+	<link href="{{ asset('css/details.css') }}" type="text/css" rel="stylesheet">
+{% endblock %}
 {% block body %}
-{% include ('mininavbar.html.twig') %}
-<div class="container-fluid">
-    <div id="banniere-vs" class="row">
-        <div class="col-md-12 text-center my-4">
-            <img width="20%" src="{{ asset('build/images/4.png') }}" /><br>
-            <h1>{{ city_name }}</h1>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <table>
-                <caption>
-                    <h2 class="caption_h">Donnée météo</h2>
-                </caption>
-                <tbody>
-                    <tr>
-                        <th class="middle_td">Température minimale</th>
-                    </tr>
-                    <tr>
-                        <td class="middle_td">8</td>
-                    </tr>
-                    <tr>
-                        <th class="middle_td">Température maximale</th>
-                    </tr>
-                    <tr>
-                        <td class="middle_td">20</td>
-                    </tr>
-                    <tr>
-                        <th class="middle_td">Temps d'ensoleillement</th>
-                    </tr>
-                    <tr>
-                        <td class="middle_td">10h</td>
-                    </tr>
-                    <tr>
-                        <th class="middle_td">wind</th>
-                    </tr>
-                    <tr>
-                        <td class="middle_td">40km/h</td>
-                    </tr>
-                    <tr>
-                        <th class="middle_td">rain</th>
-                    </tr>
-                    <tr>
-                        <td class="middle_td">0%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-6">
-            <div class="row">
-                <div id="map"></div>
-                <script>
-                    var lat = {{ lat | json_encode() }}
-                    var lng = {{ lng | json_encode() }}
-                    // Initialize and add the map
-                    function initMap() {
-                        // The location of Uluru
-                        var uluru = {
-                            lat: lat,
-                            lng: lng
-                        };
-                        // The map, centered at Uluru
-                        var map = new google.maps.Map(
-                            document.getElementById('map'), {
-                                zoom: 8,
-                                center: uluru
-                            });
-                        // The marker, positioned at Uluru
-                        var marker = new google.maps.Marker({
-                            position: uluru,
-                            map: map
-                        });
-                    }
-                </script>
-                <script defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjhy053n06QVeaZgECBwicZIlvg9qDVrI&callback=initMap">
-                </script>
-            </div>
-            <div class="row">
-                <img src="http://fakeimg.pl/300/">
-            </div>
-        </div>
-    </div>
-</div>
+	{% include ('mininavbar.html.twig') %}
+	<div class="container-fluid">
+		<div id="banniere-vs" class="row">
+			<div class="col-md-12 text-center my-4">
+				{% include ('asset_weather1.html.twig') %}<br>
+				<h1>{{ city_name }}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+				<table>
+					<caption>
+						<h2 class="caption_h">Donnée météo</h2>
+					</caption>
+					<tbody>
+						<tr>
+							<th class="middle_td">Température minimale</th>
+						</tr>
+						<tr>
+							<td class="middle_td">{{ tmin }}</td>
+						</tr>
+						<tr>
+							<th class="middle_td">Température maximale</th>
+						</tr>
+						<tr>
+							<td class="middle_td">{{ tmax }}</td>
+						</tr>
+						<tr>
+							<th class="middle_td">Temps d'ensoleillement</th>
+						</tr>
+						<tr>
+							<td class="middle_td">{{ sunhours }}h</td>
+						</tr>
+						<tr>
+							<th class="middle_td">Probabilité de rafale superieur à 70km/h</th>
+						</tr>
+						<tr>
+							<td class="middle_td">{{ probawind }}%</td>
+						</tr>
+						<tr>
+							<th class="middle_td">Probabilité de pluie</th>
+						</tr>
+						<tr>
+							<td class="middle_td">{{ probarain }}%</td>
+						</tr>
+					</tbody>
+				</table>
+				<form id="form_day" action="{{ path('details', { 'slug': slug, 'insee': insee }) }}" method="post">
+					<select name="weather_date">
+						<option value="0" selected>Aujourd'hui</option>
+						<option value="1">Demain</option>
+						<option value="2">Dans 2 jours</option>
+						<option value="3">Dans 3 jours</option>
+					</select>
+					<button type="submit" class="btn btn-success">Voir</button>
+				</form>
+			</div>
+			{# Google map #}
+			<div class="col-6">
+				<div class="row">
+					<div id="map"></div>
+					<script>
+						var lat = {{ lat | json_encode() }}
+						var lng = {{ lng | json_encode() }}
+						// Initialize and add the map
+						function initMap() { // The location of Uluru
+						var uluru = {
+						lat: lat,
+						lng: lng
+						};
+						// The map, centered at Uluru
+						var map = new google.maps.Map(document.getElementById('map'), {
+						zoom: 8,
+						center: uluru
+						});
+						// The marker, positioned at Uluru
+						var marker = new google.maps.Marker({position: uluru, map: map});
+						}
+					</script>
+					<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjhy053n06QVeaZgECBwicZIlvg9qDVrI&callback=initMap"></script>
+				</div>
+				<div class="row">
+					<img src="http://fakeimg.pl/300/">
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}

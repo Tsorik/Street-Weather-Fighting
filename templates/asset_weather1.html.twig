@@ -1,21 +1,21 @@
 {% if weather1 == 0 %}
-	<img width="25%" src="{{ asset('build/images/0.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/0.png') }}"/><br>
 {% elseif weather1 == 1 %}
-	<img width="25%" src="{{ asset('build/images/1.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/1.png') }}"/><br>
 {% elseif weather1 >= 2 and weather1 <= 3 %}
-	<img width="25%" src="{{ asset('build/images/3.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/3.png') }}"/><br>
 {% elseif weather1 >= 4 and weather1 <= 5 %}
-	<img width="25%" src="{{ asset('build/images/4.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/4.png') }}"/><br>
 {% elseif weather1 >= 6 and weather1 <= 7 %}
-	<img width="25%" src="{{ asset('build/images/6.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/6.png') }}"/><br>
 {% elseif weather1 >= 10 and weather1 <= 11 or weather1 >= 13 and weather1 <= 14 or weather1 == 16 or weather1 >= 40 and weather1 <= 41 or weather1 >= 43 and weather1 <= 44 or weather1 >= 46 and weather1 <= 47 or weather1 >= 210 and weather1 <= 211 %}
-	<img width="25%" src="{{ asset('build/images/10.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/10.png') }}"/><br>
 {% elseif weather1 == 12 or weather1 == 15 or weather1 == 42 or weather1 == 45 or weather1 == 48 or weather1 == 212 %}
-	<img width="25%" src="{{ asset('build/images/12.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/12.png') }}"/><br>
 {% elseif weather1 >= 60 and weather1 <= 78 or weather1 >= 220 and weather1 <= 232 %}
-	<img width="25%" src="{{ asset('build/images/60.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/60.png') }}"/><br>
 {% elseif weather1 >= 100 and weather1 <= 142 %}
-	<img width="25%" src="{{ asset('build/images/100.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/100.png') }}"/><br>
 {% elseif weather1 == 235 %}
-	<img width="25%" src="{{ asset('build/images/100.png') }}"/><br>
+	<img class="weather_png" src="{{ asset('build/images/100.png') }}"/><br>
 {% endif %}

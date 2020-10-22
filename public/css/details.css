@@ -1,3 +1,7 @@
+.weather_png{
+    width : 20%; 
+}
+
 
 table{
     width: 100%;
@@ -35,3 +39,8 @@ tfoot {
     height: 300px;  /* The height is 300 pixels */
     width: 300px;  /* The width is the width of the web page */
    }
+
+#form_day{
+    text-align: right;
+}
+   

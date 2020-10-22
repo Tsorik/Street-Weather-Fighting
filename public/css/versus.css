@@ -2,6 +2,10 @@
     border-bottom: black solid 2px;
 }
 
+.weather_png{
+    width : 25%; 
+}
+
 table{
     width: 100%;
     text-align: center;

@@ -11,10 +11,10 @@
 		<div id="banniere-vs" class="row">
 			<div class="col-md-6 text-center my-4">
 				{% include ('asset_weather1.html.twig') %}
-				<h1><a class="details_name" href="{{ path('details', { 'slug': city_name1 }) }}">{{ city_name1 }}</a></h1>
+				<h1><a class="details_name" href="{{ path('details', { 'slug': city_name1, 'insee': insee1 }) }}">{{ city_name1 }}</a></h1>
 			</div>
 			<div class="col-md-6 text-center my-4">
-				<h1><a class="details_name" href="{{ path('details', { 'slug': city_name2 }) }}">{{ city_name2 }}</a></h1>
+				<h1><a class="details_name" href="{{ path('details', { 'slug': city_name2, 'insee': insee2 }) }}">{{ city_name2 }}</a></h1>
 				{% include ('asset_weather2.html.twig') %}
 			</div>
 		</div>
