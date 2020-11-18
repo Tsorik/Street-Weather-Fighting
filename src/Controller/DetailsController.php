@@ -27,6 +27,10 @@ class DetailsController extends AbstractController
              $city = $decoded->city;
          }
          $city_name = strstr($city->name, ' ', true);
+         if(!$city_name){
+             $city_name = $city->name;
+         }
+         dump($city_name);
         
         return $this->render('details/index.html.twig', [
             'city_name' => $city_name,

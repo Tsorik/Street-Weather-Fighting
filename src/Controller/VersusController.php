@@ -19,8 +19,7 @@ class VersusController extends AbstractController
      */
     public function index(Request $request, EntityManagerInterface $manager, VersusRepository $versusRepository, VillesFranceFreeRepository $villesFranceFree)
     {
-        global $data_details;
-
+        
         $city_name1 = $request->get('id1');
         $city_name2 = $request->get('id2');
 
